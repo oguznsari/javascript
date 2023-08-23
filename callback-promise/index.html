@@ -13,9 +13,16 @@
             });
         }
 
-        wait(2000).then(()=> {
-            console.log("2 seconds have passed.")
-        })
+        // wait(2000).then(()=> {
+        //     console.log("2 seconds have passed.");
+        // })
+        async function main() {
+            await wait(2000);
+            console.log("2 seconds have passed.");
+        }
+        main();
+
+        
     </script>
     
 </body>
