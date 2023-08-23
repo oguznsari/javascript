@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert callbacks to promise</title>
+</head>
+<body>
+    <script>
+        function wait(ms) {
+            return new Promise((resolve, reject) => {
+                setTimeout(resolve, ms);
+            });
+        }
+
+        wait(2000).then(()=> {
+            console.log("2 seconds have passed.")
+        })
+    </script>
+    
+</body>
+</html>
