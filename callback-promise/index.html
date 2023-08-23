@@ -6,6 +6,7 @@
     <title>Convert callbacks to promise</title>
 </head>
 <body>
+    <input type="file" id="myFile">
     <script>
         /* 1st
         function wait(ms) {
@@ -61,7 +62,23 @@
         }
         main();
         */
+
+        const myFile = document.getElementById("myFile");
+        myFile.addEventListener("change", () => {
+            const fileReader = new FileReader();
+            
+            fileReader.addEventListener("load", () => {
+                console.log(fileReader.result); // base64
+            })
+
+            fileReader.readAsDataURL(myFile.files[0]);
+        });
+
+        async function main() {
+
+        }
         
+        main();
     </script>
     
 </body> 
