@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar Generator with CSS </title>
+    <style>
+        .avatar {
+            font-size: 16px;
+            width: 3em;
+            height: 3em;
+            border-radius: 50%;
+            background: #555555;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar::after {
+            content: attr(data-label);
+            font-family: 'Readex Pro', sans-serif;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="avatar" data-label="DC"></div>
+    <div class="avatar" data-label="AZ"></div>
+    <div class="avatar" data-label="YT"></div>
+    <div class="avatar" data-label="OS"></div>
+    <div class="avatar" data-label="AT"></div>
+
+    <script>
+        const avatars = document.querySelectorAll(".avatar");
+        
+        avatars.forEach(a => {
+            charCodeRed = a.dataset.label.charCodeAt(0);
+            charCodeGreen = a.dataset.label.charCodeAt(1) || charCodeRed;
+
+            // 255-255-255 is white as text color
+            // so limit the background dark(ish) color mid % 200
+            const red = Math.pow(charCodeRed, 7) % 200; 
+            const green = Math.pow(charCodeGreen, 7) % 200; 
+            const blue = (red + green) % 200; 
+
+            console.log(red, green, blue);
+
+            a.style.background = `rgb(${red}, ${green}, ${blue})`
+        });
+    </script>
+</body>
+</html>
